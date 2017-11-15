@@ -11,7 +11,7 @@ description:
 
 拟牛顿法是求解非线性优化问题最有效的方法之一。考虑无约束的极小化问题<a href="http://www.codecogs.com/eqnedit.php?latex=\min\limits_x&space;f(x)" target="_blank"><img src="http://latex.codecogs.com/gif.latex?\min\limits_x&space;f(x)" title="\min\limits_x f(x)" /></a>，假设<a href="http://www.codecogs.com/eqnedit.php?latex=f(x)" target="_blank"><img src="http://latex.codecogs.com/gif.latex?f(x)" title="f(x)" /></a>为凸函数，且二阶连续可导。
 
-###原始牛顿法
+### 原始牛顿法
 基本思想：在现有极小点估计值的附近对f(x)进行二阶泰勒展开，进而找到下一个极小点的估计值
 
 <a href="http://www.codecogs.com/eqnedit.php?latex=x_{k&plus;1}=x_{k}-(H_k)^{-1}g_{k},&space;k=0,1,\cdots" target="_blank"><img src="http://latex.codecogs.com/gif.latex?x_{k&plus;1}=x_{k}-(H_k)^{-1}g_{k},&space;k=0,1,\cdots" title="x_{k+1}=x_{k}-(H_k)^{-1}g_{k}, k=0,1,\cdots" /></a>
@@ -19,13 +19,13 @@ description:
 牛顿法具有二次收敛性，但当目标函数非二次型时，牛顿法不能保证函数稳定地下降（缺点）。
 
 
-###阻尼牛顿法
+### 阻尼牛顿法
 每次迭代前需要沿迭代方向<a href="http://www.codecogs.com/eqnedit.php?latex=d_k=-(H_k)^{-1}g_k" target="_blank"><img src="http://latex.codecogs.com/gif.latex?d_k=-(H_k)^{-1}g_k" title="d_k=-(H_k)^{-1}g_k" /></a>做线搜索，寻求最优的步长因子<a href="http://www.codecogs.com/eqnedit.php?latex=\lambda_k" target="_blank"><img src="http://latex.codecogs.com/gif.latex?\lambda_k" title="\lambda_k" /></a>，即
 
 <a href="http://www.codecogs.com/eqnedit.php?latex=\lambda_k&space;=&space;\arg\min\limits_{\lambda}&space;f(x_k&plus;\lambda&space;d_k)" target="_blank"><img src="http://latex.codecogs.com/gif.latex?\lambda_k&space;=&space;\arg\min\limits_{\lambda}&space;f(x_k&plus;\lambda&space;d_k)" title="\lambda_k = \arg\min\limits_{\lambda} f(x_k+\lambda d_k)" /></a>
 
 
-###拟牛顿法
+### 拟牛顿法
 基本思想：不使用二阶偏导数而构造出可以近似Hession或Hession的逆的正定对称阵，在“拟牛顿”的条件下优化目标函数。
 
 先推导拟牛顿条件：在<a href="http://www.codecogs.com/eqnedit.php?latex=x_{k&plus;1}" target="_blank"><img src="http://latex.codecogs.com/gif.latex?x_{k&plus;1}" title="x_{k+1}" /></a>附近对<a href="http://www.codecogs.com/eqnedit.php?latex=f(x)" target="_blank"><img src="http://latex.codecogs.com/gif.latex?f(x)" title="f(x)" /></a>做泰勒展开，取二阶近似项
@@ -48,7 +48,7 @@ description:
 
 
 
-####DFP算法（Davidon–Fletcher–Powell formula）
+#### DFP算法（Davidon–Fletcher–Powell formula）
 
 核心：通过迭代的方法，对hession的逆做近似。迭代格式为
 
@@ -73,17 +73,17 @@ description:
 <a href="http://www.codecogs.com/eqnedit.php?latex=\Rightarrow&space;\Delta&space;D_k=\frac{s_ks_k^{\mathrm{T}}}{s_k^{\mathrm{T}}y_k}-\frac{D_ky_ky_k^{\mathrm{T}}D_k}{y_k^{\mathrm{T}}D_ky_k}" target="_blank"><img src="http://latex.codecogs.com/gif.latex?\Rightarrow&space;\Delta&space;D_k=\frac{s_ks_k^{\mathrm{T}}}{s_k^{\mathrm{T}}y_k}-\frac{D_ky_ky_k^{\mathrm{T}}D_k}{y_k^{\mathrm{T}}D_ky_k}" title="\Rightarrow \Delta D_k=\frac{s_ks_k^{\mathrm{T}}}{s_k^{\mathrm{T}}y_k}-\frac{D_ky_ky_k^{\mathrm{T}}D_k}{y_k^{\mathrm{T}}D_ky_k}" /></a>
 
 
-####BFGS算法（Broyden–Fletcher–Goldfarb–Shanno algorithm）
+#### BFGS算法（Broyden–Fletcher–Goldfarb–Shanno algorithm）
 核心公式的推导过程与DFP完全类似，只是互换了其中s{k}和y{k}的位置。BFGS直接逼近Hession矩阵B_k。(公式敲起来太累了，请自行推导)
 
 
-####LBFGS算法(limited-memory BFGS)
+#### LBFGS算法(limited-memory BFGS)
 不再存储完整的D_k，而是存储计算过程中的向量序列{s}，{y}。当需要矩阵D_k时，利用向量序列的计算来代替。并且，向量序列也不是全部存储，而是固定存最新的m个。
 
 若要实现并行，需要同时在x与梯度（影响y的计算）那儿求一致平均。
 
 
-###资料
+### 资料
 
 【1】[DFP算法](http://en.wikipedia.org/wiki/Davidon%E2%80%93Fletcher%E2%80%93Powell_formula)
 

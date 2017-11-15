@@ -11,17 +11,17 @@ Markdown是读写性都非常好的轻量文本编辑语言，这个博客以及
 
 本文默认我们是会使用LaTeX编辑数学公式的。
 
-###解决办法：
+### 解决办法：
 
 - 将数学公式以图片形式保存，再在Markdown中将其插入。
 - 或者，使用LaTeX在线编辑器，输入数学公式，获得html代码，将其插入Markdown。
 
-###步骤：
+### 步骤：
 
 - 进入[CodeCogs](http://www.codecogs.com/latex/eqneditor.php)
 - 在盒子里书写公式
 - 在页面下方复制html代码
 - 将复制的html代码拷贝到Markdown里
 
-###缺点：
+### 缺点：
 Markdown文件的易读性却因此下降了很多。
